@@ -11,15 +11,13 @@ const handler = api().get(async (req, res) => {
       category,
     },
   });
-  await axios
-    .get(url)
-    .then((response) => res.status(200).json(response.data))
-    .catch((err) =>
-      res.status(err.response.status).json({
-        message: err.response.statusText,
-        status: err.response.status,
-      })
-    );
+  await axios.get(url).then((response) => res.status(200).json(response.data));
+  // .catch((err) =>
+  //   res.status(err.response.status).json({
+  //     message: err.response.statusText,
+  //     status: err.response.status,
+  //   })
+  // );
 });
 
 export default handler;

@@ -1,5 +1,6 @@
 import axios from "axios";
 import type { NextPage } from "next";
+import { signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import Image from "next/image";
 import useSWR from "swr";
@@ -15,6 +16,8 @@ const Home: NextPage = () => {
 
   console.log("data:", data);
   console.log("error:", error);
+  const session = useSession();
+  console.log("Session: ", session);
 
   return (
     <div className={styles.container}>
@@ -25,6 +28,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
+        <button onClick={() => signOut()}>Sign Out</button>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
